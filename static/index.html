@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <meta
+      name="description"
+      content="Ask questions about ETL, data pipelines, and SQL with the AI Data Agent."
+    >
+    <title>AI Data Agent — Data work, made clearer</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Application sidebar">
+        <a class="brand" href="/" aria-label="AI Data Agent home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M7 23.5V16m6 7.5V9m6 14.5v-11m6 11V6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="7" cy="12" r="2" fill="currentColor"/>
+              <circle cx="19" cy="8" r="2" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="brand-copy">
+            <strong>data<span>agent</span></strong>
+            <small>INTELLIGENCE WORKSPACE</small>
+          </span>
+        </a>
+
+        <div class="sidebar-caption">YOUR WORKSPACE</div>
+        <button class="new-chat-button" id="new-chat" type="button">
+          <span aria-hidden="true">＋</span>
+          New conversation
+          <kbd>Ctrl K</kbd>
+        </button>
+
+        <div class="sidebar-caption quick-caption">QUICK START</div>
+        <nav class="quick-links" aria-label="Suggested topics">
+          <button type="button" class="quick-link" data-prompt="Help me plan a reliable ETL pipeline for a new data source.">
+            <span class="quick-icon violet" aria-hidden="true">↗</span>
+            ETL pipeline planning
+          </button>
+          <button type="button" class="quick-link" data-prompt="How should I validate data quality between source and destination tables?">
+            <span class="quick-icon blue" aria-hidden="true">✓</span>
+            Data quality checks
+          </button>
+          <button type="button" class="quick-link" data-prompt="Explain how to write a SQL query that finds duplicate rows in a table.">
+            <span class="quick-icon amber" aria-hidden="true">{ }</span>
+            SQL assistance
+          </button>
+        </nav>
+
+        <div class="sidebar-spacer"></div>
+        <section class="privacy-card" aria-label="Privacy information">
+          <span class="privacy-icon" aria-hidden="true">◈</span>
+          <div>
+            <strong>Private by design</strong>
+            <p>Your prompts are processed securely and are not saved as chat history.</p>
+          </div>
+        </section>
+        <div class="sidebar-footer">
+          <span class="avatar" aria-hidden="true">AI</span>
+          <span><strong>AI Data Agent</strong><small>ETL · Pipelines · SQL</small></span>
+          <span class="footer-menu" aria-hidden="true">···</span>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Workspace</span><span class="crumb-divider">/</span><strong>Assistant</strong></div>
+          <div class="topbar-actions">
+            <span class="service-pill" id="service-status"><i></i> Checking service</span>
+            <a class="docs-link" href="https://github.com/anshlambagit/AI_Data_Agent" target="_blank" rel="noreferrer">Project docs <span aria-hidden="true">↗</span></a>
+          </div>
+        </header>
+
+        <section class="chat-layout" aria-label="AI assistant">
+          <div class="conversation" id="conversation" aria-live="polite">
+            <section class="welcome" id="welcome">
+              <div class="welcome-orbit" aria-hidden="true">
+                <span class="orbit-dot dot-one"></span>
+                <span class="orbit-dot dot-two"></span>
+                <span class="orbit-dot dot-three"></span>
+                <div class="welcome-logo">
+                  <svg viewBox="0 0 32 32" fill="none">
+                    <path d="M7 23.5V16m6 7.5V9m6 14.5v-11m6 11V6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="7" cy="12" r="2" fill="currentColor"/>
+                    <circle cx="19" cy="8" r="2" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+              <p class="welcome-eyebrow">YOUR DATA WORKSPACE, REIMAGINED</p>
+              <h1>Good data starts<br>with a <span>good question.</span></h1>
+              <p class="welcome-copy">Get practical guidance for data pipelines, ETL workflows, and SQL—from planning to production.</p>
+
+              <div class="suggestion-grid" aria-label="Example prompts">
+                <button class="suggestion-card" type="button" data-prompt="Help me design an ETL pipeline that ingests daily CSV files, validates the schema, and loads clean records into a warehouse.">
+                  <span class="suggestion-icon violet" aria-hidden="true">↗</span>
+                  <span><strong>Design an ETL workflow</strong><small>Build a reliable pipeline from source to warehouse</small></span>
+                  <span class="suggestion-arrow" aria-hidden="true">↗</span>
+                </button>
+                <button class="suggestion-card" type="button" data-prompt="What data quality checks should I add to detect missing values, duplicates, and unexpected schema changes?">
+                  <span class="suggestion-icon green" aria-hidden="true">✓</span>
+                  <span><strong>Improve data quality</strong><small>Catch missing values, duplicates, and drift</small></span>
+                  <span class="suggestion-arrow" aria-hidden="true">↗</span>
+                </button>
+                <button class="suggestion-card" type="button" data-prompt="Write a SQL query to find duplicate email addresses in a users table and explain how it works.">
+                  <span class="suggestion-icon amber" aria-hidden="true">{ }</span>
+                  <span><strong>Get help with SQL</strong><small>Explain a query or solve a database problem</small></span>
+                  <span class="suggestion-arrow" aria-hidden="true">↗</span>
+                </button>
+                <button class="suggestion-card" type="button" data-prompt="How should I monitor and recover a scheduled data pipeline when one of its upstream sources is unavailable?">
+                  <span class="suggestion-icon blue" aria-hidden="true">⌁</span>
+                  <span><strong>Troubleshoot a pipeline</strong><small>Handle failures, retries, and observability</small></span>
+                  <span class="suggestion-arrow" aria-hidden="true">↗</span>
+                </button>
+              </div>
+            </section>
+            <div class="message-list" id="message-list"></div>
+          </div>
+
+          <div class="composer-area">
+            <div class="captcha-wrap" id="captcha-wrap" hidden>
+              <div id="captcha" aria-label="CAPTCHA verification"></div>
+            </div>
+            <form id="chat-form" class="composer">
+              <label class="sr-only" for="prompt">Ask a question about ETL, data pipelines, or SQL</label>
+              <textarea
+                id="prompt"
+                name="prompt"
+                maxlength="2000"
+                rows="1"
+                placeholder="Ask anything about ETL, pipelines, or SQL…"
+                required
+                aria-describedby="composer-help"
+              ></textarea>
+              <div class="composer-bottom">
+                <span class="composer-hint" id="composer-help"><span aria-hidden="true">↵</span> Enter to send · Shift + Enter for a new line</span>
+                <div class="composer-controls">
+                  <span id="char-count">0 / 2000</span>
+                  <button class="send-button" id="submit" type="submit" aria-label="Send prompt" disabled>
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+            <p class="status-message" id="status" role="status" aria-live="polite">Checking service configuration…</p>
+            <p class="disclaimer">AI can make mistakes. Review generated SQL and pipeline advice before using it.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
