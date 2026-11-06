@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: ai-data-agent
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn web_app:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips="*"
+    healthCheckPath: /health
+    disk:
+      name: ai-data-agent-usage
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: DATA_AGENT_DB_PATH
+        value: /opt/render/project/src/data/web_usage.sqlite3
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: APP_HMAC_KEY
+        sync: false
+      - key: CAPTCHA_SITE_KEY
+        sync: false
+      - key: CAPTCHA_SECRET_KEY
+        sync: false
+      - key: OPENAI_MONTHLY_BUDGET_USD
+        sync: false
+      - key: OPENAI_INPUT_PRICE_PER_MILLION
+        sync: false
+      - key: OPENAI_OUTPUT_PRICE_PER_MILLION
+        sync: false
